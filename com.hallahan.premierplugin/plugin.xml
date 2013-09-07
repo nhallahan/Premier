@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.hallahan.premierplugin.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="com.hallahan.premierplugin.Perspective"
+            id="com.hallahan.premierPlugin.perspective">
+      </perspective>
+   </extension>
+   <extension
+         id="com_hallahan_premierplugin"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.hallahan.premierplugin.application"
+            name="Premier">
+         <property
+               name="appName"
+               value="Premier">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="com_test"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.hallahan.premierplugin.application"
+            name="Premier">
+         <property
+               name="appName"
+               value="Premier">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

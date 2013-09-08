@@ -50,9 +50,9 @@
 		</plugins>
 	</build>
 	<modules>
-			<module>com.hallahan.targetPlatform</module>
-		<module>com.hallahan.premierPlugin</module>
-		<module>com.hallahan.premierFeature</module>
-		<module>com.hallahan.premierProduct</module>
+			<module>../targetPlatform</module>
+		<module>../com.hallahan.premierPlugin</module>
+		<module>../com.hallahan.premierFeature</module>
+		<module>../com.hallahan.premierProduct</module>
 	</modules>
 </project>

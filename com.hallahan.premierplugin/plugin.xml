@@ -14,9 +14,9 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="RCP Perspective"
             class="com.hallahan.premierplugin.Perspective"
-            id="com.hallahan.premierPlugin.perspective">
+            id="com.hallahan.premierPlugin.perspective"
+            name="RCP Perspective">
       </perspective>
    </extension>
    <extension
@@ -30,6 +30,16 @@
                value="Premier">
          </property>
       </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="com.hallahan.premierTable.PremierTableView"
+            id="com.hallahan.premierplugin.views.PremierTable"
+            name="Premier"
+            restorable="true">
+      </view>
    </extension>
    <extension
          id="com_test"

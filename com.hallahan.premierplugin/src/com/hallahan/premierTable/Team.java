@@ -98,7 +98,6 @@ public class Team implements Serializable{
 		}
 		
 		public static ArrayList<Team> example(){
-			System.out.println("Team.example()");
 			String [] teamNames = {"Man Utd","Aston Villa","Chelsea","West Ham","Fulham"
 					,"Liverpool","Southampton","Tottenham","Everton","Norwich","Man City","Crystal Palace"
 					,"Stoke","Sunderland","West Brom","Cardiff","Arsenal","Hull","Swansea","Newcastle"};

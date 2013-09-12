@@ -2,34 +2,58 @@ package com.hallahan.premierTable;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IViewReference;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.part.ViewPart;
 
-public class PremierTableView extends ViewPart {
+public class PremierTableView extends ViewPart{
 	public static final String ID = "com.hallahan.premierplugin.views.PremierTable";
 	
+	
+	
 	static ArrayList<Team> ListOfTeams;
+	TableViewer tableViewer;
 
 	public PremierTableView() {
 		super();
 	}
+	
+	public static IViewPart getView(IWorkbenchWindow window, String viewId) {
+	    IViewReference[] refs = window.getActivePage().getViewReferences();
+	    for (IViewReference viewReference : refs) {
+	        if (viewReference.getId().equals(viewId)) {
+	            return viewReference.getView(true);
+	        }
+	    }
+	    return null;
+	}
+
+	public void refreshTable(){
+		System.out.println("PremierTableView.refreshTable()");
+		tableViewer.refresh();
+	}
+
+	public static ArrayList<Team> getListOfTeams() {
+		return ListOfTeams;
+	}
+
+	public static void setListOfTeams(ArrayList<Team> listOfTeams) {
+		ListOfTeams = listOfTeams;
+	}
 
 	@Override
 	public void createPartControl(final Composite parent) {
-		final TableViewer tableViewer = new TableViewer(
+		tableViewer = new TableViewer(
 				parent, SWT.SINGLE | SWT.FULL_SELECTION);
 		final Table table = tableViewer.getTable();
 		table.setHeaderVisible(true);
@@ -51,38 +75,10 @@ public class PremierTableView extends ViewPart {
 			tableColumn.setText(columnNames[i]);
 			tableColumn.setWidth(columnWidths[i]);
 		}
-		
+
 		tableViewer.setLabelProvider(new TeamLabelProvider());
 		tableViewer.setContentProvider(new ArrayContentProvider());
 		
-		//Create File Menu & Add Team
-//		Menu bar = new Menu(parent);
-//		parent.setMenu(bar);
-//		MenuItem fileMenu = new MenuItem(bar, SWT.CASCADE);
-//		fileMenu.setText("&File");
-//		Menu subMenu = new Menu(parent);
-//		fileMenu.setMenu(subMenu);
-//		MenuItem selectItem = new MenuItem(subMenu, SWT.NULL);
-//		selectItem.setText("&Add Match");
-//		selectItem.addSelectionListener(new SelectionAdapter(){
-//			public void widgetSelected(SelectionEvent event){
-//				System.out.println("Launching add Match window");
-//				AddMatchGui dialog = new AddMatchGui(parent);
-//				dialog.create();
-//				if (dialog.open() == Window.OK) {
-//					AddMatchValidationCriteria amvc = new AddMatchValidationCriteria();
-//					boolean selectionVerified = amvc.validateMatchInput(dialog.getHomeTeam(), 
-//							  dialog.getAwayTeam(),ListOfTeams);
-//					if(!selectionVerified){
-//						MessageDialog.openError((Shell) parent, "Error", "Invalid criteria");
-//					}else{
-//					ListOfTeams = AddMatchFunctionality.updateTeamGamesPlayed(dialog.getHomeTeam(), 
-//						dialog.getAwayTeam(), ListOfTeams);
-//						tableViewer.setInput(ListOfTeams);
-//					}
-//				} 
-//			}
-//		});
 
 //		reload previous table if a saved copy exists
 				File f = new File("C:/Users/Niall/Desktop/Storage" +
@@ -102,14 +98,6 @@ public class PremierTableView extends ViewPart {
 						tableViewer.setInput(ListOfTeams);
 					}
 				
-//				MenuItem sep = new MenuItem(subMenu, SWT.SEPARATOR);
-//				MenuItem exitItem = new MenuItem(subMenu, SWT.NULL);
-//				exitItem.setText("&Exit");
-//				exitItem.addSelectionListener(new SelectionAdapter(){
-//					public void widgetSelected(SelectionEvent event){
-//						parent.dispose();
-//					}
-//				});
 				
 //				parent.open();
 //				while (!parent.isDisposed()){
@@ -127,11 +115,11 @@ public class PremierTableView extends ViewPart {
 
 
 	}
-
 	@Override
 	public void setFocus() {
 		// TODO Auto-generated method stub
-
+		
 	}
+
 
 }

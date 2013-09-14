@@ -18,6 +18,10 @@ public class AddMatchGui extends TitleAreaDialog {
   private Text txtAwayTeam;
   private String homeTeam;
   private String awayTeam;
+  private Text txtHomeTeamScore;
+  private Text txtAwayTeamScore;
+  private String homeTeamScore;
+  private String awayTeamScore;
 
   public AddMatchGui(Composite parentShell) {
     super((Shell)parentShell);
@@ -38,7 +42,7 @@ public class AddMatchGui extends TitleAreaDialog {
     Composite area = (Composite) super.createDialogArea(parent);
     Composite container = new Composite(area, SWT.NONE);
     container.setLayoutData(new GridData(GridData.FILL_BOTH));
-    GridLayout layout = new GridLayout(2, false);
+    GridLayout layout = new GridLayout(4, false);// Updated to 4
     container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
     container.setLayout(layout);
     Label lbtHomeTeam = new Label(container, SWT.NONE);
@@ -53,6 +57,7 @@ public class AddMatchGui extends TitleAreaDialog {
 
     Label lbtLastName = new Label(container, SWT.NONE);
     lbtLastName.setText("Away team :");
+    
 
     // You should not re-use GridData
     GridData dataLastName = new GridData();
@@ -60,6 +65,31 @@ public class AddMatchGui extends TitleAreaDialog {
     dataLastName.horizontalAlignment = GridData.FILL;
     txtAwayTeam = new Text(container, SWT.BORDER);
     txtAwayTeam.setLayoutData(dataLastName);
+    
+  //Start
+    Label lbtHomeScore = new Label(container, SWT.NONE);
+    lbtHomeScore.setText("  Score : ");
+    
+    GridData dataHomeTeamScore = new GridData();
+    dataHomeTeamScore.grabExcessHorizontalSpace = true;
+    dataHomeTeamScore.horizontalAlignment = GridData.FILL;
+
+    txtHomeTeamScore = new Text(container, SWT.BORDER);
+    txtHomeTeamScore.setLayoutData(dataHomeTeamScore);
+    
+    
+    Label lbtAwayScore = new Label(container, SWT.NONE);
+    lbtAwayScore.setText("  Score : ");
+    
+    GridData dataAwayTeamScore = new GridData();
+    dataAwayTeamScore.grabExcessHorizontalSpace = true;
+    dataAwayTeamScore.horizontalAlignment = GridData.FILL;
+
+    txtAwayTeamScore = new Text(container, SWT.BORDER);
+    txtAwayTeamScore.setLayoutData(dataAwayTeamScore);
+    
+//End   
+    
     return area;
   }
 

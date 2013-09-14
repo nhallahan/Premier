@@ -46,7 +46,7 @@ public class AddMatchAction  extends Action implements ActionFactory.IWorkbenchA
 					dialog.getHomeTeam(), dialog.getAwayTeam(), ListOfTeams);
 
 			if (!selectionVerified) {
-				MessageDialog.openError( (Shell) window, "Error",
+				MessageDialog.openError(window.getShell(), "Error",
 						"Invalid criteria");
 			} else {
 				ListOfTeams = AddMatchFunctionality

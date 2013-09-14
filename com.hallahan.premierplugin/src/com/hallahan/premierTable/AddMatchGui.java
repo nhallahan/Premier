@@ -104,6 +104,8 @@ public class AddMatchGui extends TitleAreaDialog {
   private void saveInput() {
     homeTeam = txtHomeTeam.getText();
     awayTeam = txtAwayTeam.getText();
+    homeTeamScore = txtHomeTeamScore.getText();
+    awayTeamScore = txtAwayTeamScore.getText();
 
   }
 
@@ -113,7 +115,23 @@ public class AddMatchGui extends TitleAreaDialog {
     super.okPressed();
   }
 
-  public String getHomeTeam() {
+  public String getHomeTeamScore() {
+	return homeTeamScore;
+}
+
+public void setHomeTeamScore(String homeTeamScore) {
+	this.homeTeamScore = homeTeamScore;
+}
+
+public String getAwayTeamScore() {
+	return awayTeamScore;
+}
+
+public void setAwayTeamScore(String awayTeamScore) {
+	this.awayTeamScore = awayTeamScore;
+}
+
+public String getHomeTeam() {
     return homeTeam;
   }
 

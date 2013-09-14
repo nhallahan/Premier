@@ -43,16 +43,15 @@ public class AddMatchAction  extends Action implements ActionFactory.IWorkbenchA
 		if (dialog.open() == Window.OK) {
 			AddMatchValidationCriteria amvc = new AddMatchValidationCriteria();
 			boolean selectionVerified = amvc.validateMatchInput(
-					dialog.getHomeTeam(), dialog.getAwayTeam(), ListOfTeams);
+					dialog.getHomeTeam(), dialog.getAwayTeam(), dialog.getHomeTeamScore(),dialog.getAwayTeamScore(), ListOfTeams);
 
 			if (!selectionVerified) {
 				MessageDialog.openError(window.getShell(), "Error",
 						"Invalid criteria");
 			} else {
 				ListOfTeams = AddMatchFunctionality
-						.updateTeamGamesPlayed(dialog.getHomeTeam(),
-								dialog.getAwayTeam(), ListOfTeams);
-				
+						.updateTeamResults(dialog.getHomeTeam(),
+								dialog.getAwayTeam(),dialog.getHomeTeamScore(),dialog.getAwayTeamScore(), ListOfTeams);
 				PremierTableView view = (PremierTableView) 
 						PremierTableView.getView(window,  PremierTableView.ID);
 				view.refreshTable();

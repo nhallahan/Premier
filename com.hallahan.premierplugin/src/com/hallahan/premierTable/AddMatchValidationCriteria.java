@@ -7,7 +7,8 @@ public class AddMatchValidationCriteria {
 		String AwayTeam;
 		ArrayList<Team> localListOfTeams;
 		
-		public boolean validateMatchInput(String HomeTeam, String AwayTeam,ArrayList<Team> ListOfTeams) {
+		public boolean validateMatchInput(String HomeTeam, String AwayTeam, String homeTeamScore, String awayTeamScore
+				,ArrayList<Team> ListOfTeams) {
 			this.HomeTeam = HomeTeam;
 			this.AwayTeam = AwayTeam;
 			this.localListOfTeams = ListOfTeams;

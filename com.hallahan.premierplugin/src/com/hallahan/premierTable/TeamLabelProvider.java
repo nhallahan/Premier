@@ -31,7 +31,7 @@ import org.eclipse.swt.graphics.Image;
 		case 4:
 			return Integer.toString(team.getGamesDrawn());
 		case 5:
-			return Integer.toString(team.getGoalsScored());
+			return Integer.toString(team.getGamesLost());
 		case 6:
 			return Integer.toString(team.getGoalsScored());
 		case 7:

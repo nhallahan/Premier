@@ -48,6 +48,9 @@ public class Team implements Serializable{
 		public void setGamesWon(int gamesWon) {
 			this.gamesWon = gamesWon;
 		}
+		public void incrementGamesWon(){
+			gamesWon++;
+		}
 
 		public int getGamesDrawn() {
 			return gamesDrawn;
@@ -55,6 +58,9 @@ public class Team implements Serializable{
 
 		public void setGamesDrawn(int gamesDrawn) {
 			this.gamesDrawn = gamesDrawn;
+		}
+		public void incrementGamesDrawn(){
+			gamesDrawn++;
 		}
 
 		public int getGamesLost() {
@@ -64,6 +70,9 @@ public class Team implements Serializable{
 		public void setGamesLost(int gamesLost) {
 			this.gamesLost = gamesLost;
 		}
+		public void incrementGamesLost(){
+			gamesLost++;
+		}
 
 		public int getGoalsScored() {
 			return goalsScored;
@@ -71,6 +80,13 @@ public class Team implements Serializable{
 
 		public void setGoalsScored(int goalsScored) {
 			this.goalsScored = goalsScored;
+		}
+		public void updateGoalsScored(int goals){
+			this.goalsScored += goals;
+			System.out.println("Team.updateGoalsScored() for "+this.getTeamName());
+		}
+		public void updateGoalsConceded(int goals){
+			this.goalsConceded += goals;
 		}
 
 		public int getGoalsConceded() {
@@ -88,6 +104,9 @@ public class Team implements Serializable{
 		public void setGoalDifference(int goalDifference) {
 			this.goalDifference = goalDifference;
 		}
+		public void updateGoalDifference(){
+			this.goalDifference = goalsScored - goalsConceded;
+		}
 
 		public int getPoints() {
 			return points;
@@ -95,6 +114,9 @@ public class Team implements Serializable{
 
 		public void setPoints(int points) {
 			this.points = points;
+		}
+		public void updatePoints(int updatePoints){
+			points += updatePoints;
 		}
 		
 		public static ArrayList<Team> example(){
